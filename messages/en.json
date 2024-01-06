@@ -1,5 +1,6 @@
 {
-  "Index": {
-    "title": "Hello world!"
+  "Hero": {
+    "Heading": "Hello world!",
+    "Paragraph": "Paragraph"
   }
 }
