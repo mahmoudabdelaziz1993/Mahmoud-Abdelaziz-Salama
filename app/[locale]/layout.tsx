@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cairo as Font } from 'next/font/google'
+import { Alexandria as Font } from 'next/font/google'
 import '../globals.css'
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';

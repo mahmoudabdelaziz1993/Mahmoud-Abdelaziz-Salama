@@ -16,6 +16,7 @@ export interface BasicInfoResponse {
   error?: string,        // error
   success: 'success' | 'error'
 }
+
 export async function GET(req: NextRequest, { params: { locale } }: { params: { locale: string } }) {
 
 

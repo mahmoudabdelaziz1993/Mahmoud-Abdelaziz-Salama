@@ -14,7 +14,7 @@ import { BasicInfo } from '@/types/my-types'
 export default function BasicInfoCard({ name, label, summary, location_address, image, email, phone, phone2 }: BasicInfo) {
   console.log("name", name)
     return (
-        <Card>
+        <Card >
             <CardHeader>
                 <CardTitle>{name}</CardTitle>
                 <CardDescription>{label}</CardDescription>
@@ -23,10 +23,10 @@ export default function BasicInfoCard({ name, label, summary, location_address, 
                 <p>{summary}</p>
             </CardContent>
             <CardFooter>
-                <div className="grid">
+                <div className="flex flex-col text-sm">
                     <p>{location_address}</p>
                     <p>{email}</p>
-                    <p>{phone} / {phone2}</p>
+                    <p>+{phone} / +{phone2}</p>
                 </div>
                 
             </CardFooter>
