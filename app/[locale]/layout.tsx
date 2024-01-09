@@ -27,7 +27,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} dir={locale === 'ar-EG' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <body
        className={cn(
         "min-h-screen bg-background font-base antialiased",
