@@ -12,7 +12,6 @@ import { BasicInfo } from '@/types/my-types'
 
 
 export default function BasicInfoCard({ name, label, summary, location_address, image, email, phone, phone2 }: BasicInfo) {
-  console.log("name", name)
     return (
         <Card >
             <CardHeader>

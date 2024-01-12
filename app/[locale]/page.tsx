@@ -1,8 +1,7 @@
-import Image from 'next/image'
-import Hi from '../components/Hi'
-import { type Response } from '@/types/my-types'
-import { BasicInfoResponse } from './api/database-test/route'
+
 import BasicInfoCard from '../components/Basic-Info-card'
+import { GetBasicInfo, GetSkills } from '@/utils/request-data-functions'
+import { SkillCard } from '../components/Skill-card'
 
 type Props = {
   params: {
@@ -10,17 +9,16 @@ type Props = {
   }
 }
 export default async function Home({ params: { locale } }: Props) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/${locale}/api/BasicInfo`
-  )
-  const {data,error,success} :BasicInfoResponse  = await res.json()
-
+console.log(locale)
+  const { data: BasicInfo, success } = await GetBasicInfo(locale)
+  const { data: skills, success: skillsSuccess } = await GetSkills()
   return (
     <main className="container p-4 mx-auto">
-   {data && <BasicInfoCard name={data.name} label={data.label} summary={data.summary} location_address={data.location_address} image={data.image} email={data.email} phone={data.phone} phone2={data.phone2}/>}
-      {/* <h1>Hello , I&apos;m {JSON.stringify(fetched)}</h1> */}
-      {/* <h1>{locale}</h1>
-      <Hi /> */}
+
+      {success && BasicInfo && <BasicInfoCard name={BasicInfo.name} label={BasicInfo.label} summary={BasicInfo.summary} location_address={BasicInfo.location_address} image={BasicInfo.image} email={BasicInfo.email} phone={BasicInfo.phone} phone2={BasicInfo.phone2} />}
+      {skillsSuccess && skills && skills.map((skill) => (
+        <SkillCard key={skill.id} name={skill.name} level={skill.level} icon={skill.icon} id={skill.id} />
+      ))}
     </main>
   )
 }
