@@ -11,7 +11,7 @@ type Props = {
 export default async function Home({ params: { locale } }: Props) {
 console.log(locale)
   const { data: BasicInfo, success } = await GetBasicInfo(locale)
-  const { data: skills, success: skillsSuccess } = await GetSkills()
+  const { data: skills, success: skillsSuccess } = await GetSkills(locale)
   return (
     <main className="container p-4 mx-auto">
 

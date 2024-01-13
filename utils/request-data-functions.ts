@@ -10,8 +10,8 @@ const url = `${process.env.NEXT_PUBLIC_URL}/${locale}/api/BasicInfo`
 }
 
 // get skills data function
-export async function GetSkills() {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/skill-set`)
+export async function GetSkills(locale: string) {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/${locale}/api/skill-set`)
     const data:SkillSetResponse = await response.json()
     return data
 }

@@ -11,10 +11,10 @@ export const config = {
 
 
 export interface Skill {
-    name:  string;
+    name: string;
     level: number;
-    icon:  string;
-    id:    string;
+    icon: string;
+    id: string;
 }
 export interface SkillSetResponse {
     data?: Skill[],         // data
@@ -26,7 +26,9 @@ export async function GET(req: NextRequest, { params: { locale } }: { params: { 
 
     try {
         const client = await pool.connect();
-        const query = 'SELECT * FROM skills';
+        const query_ar = 'SELECT "name_ar" as "name", "level",  "icon" , "id" FROM skills';
+        const query_en = 'SELECT "name_en" as "name", "level",  "icon" , "id" FROM skills';
+        const query = locale === 'ar-EG' ? query_ar : query_en;
         const { rows } = await client.query(query);
         const response: SkillSetResponse = { success: true, data: rows };
         client.release();

@@ -1,5 +1,6 @@
 'use client'
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react";
 
 /**
  * Renders a skill level component based on the provided level.
@@ -8,29 +9,34 @@ import { motion } from "framer-motion"
  * @return {JSX.Element} - The rendered skill level Rate Stars component.
  */
 export function SkillLevel({ level }: { level: number }) {
+    // Define an reference to the container element
+    const containerRef = useRef(null);
+    // Define inView state for the container
+    const containerInView = useInView(containerRef,{amount:0.5,once:true});
     // Define animation variants for the container
     const container = {
-        hidden: { y: 20, opacity: 0, scale: 0 },
+        hidden: { y: 10, opacity: 0, scale: 0 },
         visible: {
             y: 0,
             opacity: 1,
             scale: 1,
             transition: {
                 when: "beforeChildren",
-                staggerChildren: 0.2
+                staggerChildren: 0.1
             }
         }
     };
 
     // Define animation variants for the stars
     const starsvariants = {
-        hidden: { x: -20, opacity: 0, scale: 1 },
+        hidden: { y: 10, opacity: 0, scale: 1 },
         visible: {
-            x: 0,
+            y: 0,
             opacity: 1,
             scale: 1
         },
-        hover: { scale: 1.5 }
+        hover: { scale: 1.5 },
+        tap: { scale: 1.2 }
     };
 
     // Define a full star SVG component
@@ -38,6 +44,7 @@ export function SkillLevel({ level }: { level: number }) {
         <motion.svg
             variants={starsvariants}
             whileHover="hover"
+            whileTap="tap"
             className="text-yellow-300 hover:text-yellow-400"
             key={"star"}
             xmlns="http://www.w3.org/2000/svg"
@@ -57,6 +64,7 @@ export function SkillLevel({ level }: { level: number }) {
         <motion.svg
             variants={starsvariants}
             whileHover="hover"
+            whileTap="tap"
             className="text-yellow-300"
             key={"halfStar"}
             xmlns="http://www.w3.org/2000/svg"
@@ -79,14 +87,15 @@ export function SkillLevel({ level }: { level: number }) {
     return (
         // Render the skill level component
         <motion.div
+            ref={containerRef}
             variants={container}
             initial="hidden"
-            animate="visible"
+            animate={containerInView ? "visible" : "hidden"}
             className="inline-flex my-2"
         >
             {/* Render each star */}
             {Stars.map((star, index) => (
-                <motion.div key={index} variants={starsvariants} className="cursor-none">
+                <motion.div key={index} variants={starsvariants} className="cursor-pointer">
                     {star}
                 </motion.div>
             ))}
