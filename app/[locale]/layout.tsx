@@ -3,9 +3,14 @@ import { Alexandria as Font } from 'next/font/google'
 import '../globals.css'
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
+import { ThemeProvider } from "@/app/components/theme-provider"
 
 const font = Font({ subsets: ['latin'], variable: '--font-base' })
 import { cn } from "@/lib/utils"
+import { ThemeModeToggle } from '../components/Theme-Toggle';
+import ThemeSwitch from '../components/theme-switch';
+import ThemeCustomSwitch from '../components/theme-custom-switch';
+import LocaleSwitch from '../components/locale-switch';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -29,13 +34,25 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={locale === 'ar-EG' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <body
-       className={cn(
-        "min-h-screen bg-background font-base antialiased",
-        font.variable
-      )}
+        className={cn(
+          "min-h-screen bg-background font-base antialiased",
+          font.variable
+        )}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <header className='container flex mx-auto bg-foreground text-background'>
+              <LocaleSwitch locale={locale}/>
+              <ThemeCustomSwitch />
+            </header>
+
+            {children}
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,5 +1,9 @@
 {
   "Index": {
     "title": "Hello world!"
+  },
+  "LanguageSwitcher": {
+    "English": "English",
+    "Arabic": "Arabic"
   }
 }

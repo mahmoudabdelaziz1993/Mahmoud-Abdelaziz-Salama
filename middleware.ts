@@ -6,7 +6,7 @@ export default createMiddleware({
 
     // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
     defaultLocale: 'ar-EG',
-    // localePrefix: 'never'
+    localePrefix: 'never'
 
 });
 
