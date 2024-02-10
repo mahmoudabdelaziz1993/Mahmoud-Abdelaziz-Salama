@@ -15,18 +15,18 @@ export default function ThemeCustomSwitch() {
    
     return (
         <div
-            className="flex w-12 p-[2px] my-2 rounded-full cursor-pointer bg-input dark:justify-end"
+            className="flex w-16 p-1 my-2 rounded-full cursor-pointer bg-accent dark:justify-end"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
             <motion.div
-                className="grid w-6 h-6 rounded-full shadow-lg bg-background text-foreground place-items-center"
+                className="grid w-8 h-8 border rounded-full shadow-lg bg-background text-foreground place-items-center ring-foreground"
                 layout
                 transition={spring}
             >
                 {theme === "dark" ? (
-                    <Icon icon="solar:moon-fog-bold" className="w-4 h-4" />
+                    <Icon icon="solar:moon-fog-bold" />
                 ) : (
-                    <Icon icon="solar:sun-fog-bold" className="w-4 h-4" />
+                    <Icon icon="solar:sun-fog-bold" />
                 )}
             </motion.div>
         </div>

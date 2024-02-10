@@ -1,5 +1,5 @@
 'use client'
-import { motion, useInView } from "framer-motion"
+import { AnimatePresence, motion, useInView } from "framer-motion"
 import { useRef } from "react";
 
 /**
@@ -12,19 +12,23 @@ export function SkillLevel({ level }: { level: number }) {
     // Define an reference to the container element
     const containerRef = useRef(null);
     // Define inView state for the container
-    const containerInView = useInView(containerRef,{amount:0.5,once:true});
+    const containerInView = useInView(containerRef ,{amount:0.5 , once:true});
     // Define animation variants for the container
     const container = {
-        hidden: { y: 10, opacity: 0, scale: 0 },
+        hidden: {
+            y: 10, opacity: 0, scale: 0,
+        },
         visible: {
             y: 0,
             opacity: 1,
             scale: 1,
             transition: {
                 when: "beforeChildren",
-                staggerChildren: 0.1
+                staggerChildren: 0.1,
+                duration: 0.1
             }
         }
+
     };
 
     // Define animation variants for the stars
@@ -91,14 +95,17 @@ export function SkillLevel({ level }: { level: number }) {
             variants={container}
             initial="hidden"
             animate={containerInView ? "visible" : "hidden"}
+           
             className="inline-flex my-2"
         >
+            
             {/* Render each star */}
             {Stars.map((star, index) => (
-                <motion.div key={index} variants={starsvariants} className="cursor-pointer">
+                <motion.div key={index} variants={starsvariants}  className="prose cursor-pointer">
                     {star}
                 </motion.div>
             ))}
+           
         </motion.div>
     );
 }

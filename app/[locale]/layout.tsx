@@ -7,10 +7,10 @@ import { ThemeProvider } from "@/app/components/theme-provider"
 
 const font = Font({ subsets: ['latin'], variable: '--font-base' })
 import { cn } from "@/lib/utils"
-import { ThemeModeToggle } from '../components/Theme-Toggle';
-import ThemeSwitch from '../components/theme-switch';
+
 import ThemeCustomSwitch from '../components/theme-custom-switch';
 import LocaleSwitch from '../components/locale-switch';
+import { Link } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -28,6 +28,7 @@ export default async function RootLayout({
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
+
     notFound();
   }
 
@@ -46,12 +47,23 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <header className='container flex mx-auto bg-foreground text-background'>
-              <LocaleSwitch locale={locale}/>
-              <ThemeCustomSwitch />
-            </header>
+            <header className='container flex mx-auto border-b shadow-md drop-shadow-md'>
+              <div className="flex items-center gap-2">
+                <Link href='/'>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" fill="none" />
+                    <rect x="2" y="3" width="3.9604" height="11.8812" fill="#EC2D21" />
+                    <rect x="6.9604" y="3" width="3.9604" height="11.8812" fill="#EC2D21" />
+                    <rect x="11.9208" y="3" width="3.9604" height="11.8812" fill="#EC2D21" />
+                    <rect x="17" y="3" width="3.9604" height="15.8416" fill="#EC2D21" />
+                  </svg>
 
-            {children}
+                </Link>
+                <ThemeCustomSwitch />
+                <LocaleSwitch locale={locale} />
+              </div>
+            </header>
+                 {children}
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

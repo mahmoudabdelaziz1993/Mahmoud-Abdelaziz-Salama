@@ -31,14 +31,14 @@ export default function LocaleSwitch({ locale }: { locale: string }) {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button
-                    variant={'ghost'}
+                    variant={'outline'}
                     size={'icon'}
                     className='rounded-full '
                 >
                     {locale == 'ar-EG' ? (
-                        <Icon icon="mdi:abjad-arabic" className="w-6 h-6" />
+                        <Icon icon="mdi:abjad-arabic" />
                     ) : (
-                        <Icon icon="ri:english-input" className="w-6 h-6" />
+                        <Icon icon="ri:english-input" />
                     )}
                 </Button>
             </DropdownMenuTrigger >
