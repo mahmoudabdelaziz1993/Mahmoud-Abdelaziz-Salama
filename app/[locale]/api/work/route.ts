@@ -13,7 +13,7 @@ export interface Work {
     name: string;
     position: string;
     startDate: Date;
-    endDate: string;
+    endDate: Date;
     summary: string;
     highlights?: string[];
     
