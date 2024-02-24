@@ -57,4 +57,29 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1 ,h2 ,h3,h4,h5,h6 {
+    @apply rtl:font-headingAr ltr:font-headingEn font-extrabold
+  }
+  p {
+    @apply rtl:font-baseAr ltr:font-baseEn text-base
+    
+  }
+  h6 {
+    @apply text-lg
+  }
+  h5{
+    @apply text-xl
+  }
+  h4{
+    @apply text-2xl
+  }
+  h3{
+    @apply text-3xl
+  }
+  h2{
+    @apply text-4xl
+  }
+  h1{
+    @apply text-5xl 
+  }
 }

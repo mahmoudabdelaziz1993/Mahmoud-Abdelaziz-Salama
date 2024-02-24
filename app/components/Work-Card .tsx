@@ -4,7 +4,7 @@ import { countWorkingDays } from "@/utils/working-days";
 
 export default async function WorkCard({ Work, locale }: { Work: Work, locale: string }) {
     return (
-        <Card className="prose dark:prose-invert ">
+        <Card >
             <CardHeader>
                 <CardTitle>{`${Work.position} @ ${Work.name}`}</CardTitle>
                 <CardDescription>
@@ -12,7 +12,7 @@ export default async function WorkCard({ Work, locale }: { Work: Work, locale: s
             </CardHeader>
             <CardContent>
                 <p>{Work.summary}</p>
-                <h4 className="prose prose-stone dark:prose-invert">Highlights</h4>
+                <h4 className="">Highlights</h4>
                 <ul className="list-disc">
                     {Work.highlights && Work.highlights.map((highlight) => (
                         <li key={highlight}>{highlight}</li>

@@ -42,7 +42,7 @@ export default function LocaleSwitch({ locale }: { locale: string }) {
                     )}
                 </Button>
             </DropdownMenuTrigger >
-            <DropdownMenuContent align="center" >
+            <DropdownMenuContent align="center" className='ltr:font-headingEn rtl:font-headingAr' >
                 <DropdownMenuItem onClick={() => handleChange('en')}>
                     {t("English")}
                 </DropdownMenuItem>

@@ -18,7 +18,10 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        base: ["var(--font-base)"],
+        baseEn: ["var(--font-base-en)"],
+        headingEn: ['var(--font-heading-en)'],
+        baseAr: ["var(--font-base-ar)"],
+        headingAr: ['var(--font-heading-ar)'],
       },
       colors: {
         border: "hsl(var(--border))",
