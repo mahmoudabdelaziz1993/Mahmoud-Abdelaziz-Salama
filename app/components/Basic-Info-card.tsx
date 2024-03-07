@@ -15,10 +15,10 @@ export default function BasicInfoCard({ name, label, summary, location_address, 
     return (
         <Card  >
             <CardHeader>
-                <CardTitle>
-                    {name}
+                <CardTitle className='text-3xl leading-tight tracking-normal' >
+                     {name}
                 </CardTitle>
-                <CardDescription >
+                <CardDescription className='text-xl font-headingEn rtl:font-headingAr' >
                     {label}
                 </CardDescription>
             </CardHeader>

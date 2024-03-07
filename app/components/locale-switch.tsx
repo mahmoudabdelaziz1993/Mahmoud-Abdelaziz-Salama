@@ -33,12 +33,14 @@ export default function LocaleSwitch({ locale }: { locale: string }) {
                 <Button
                     variant={'outline'}
                     size={'icon'}
-                    className='rounded-full '
+                    className='uppercase rounded-full '
                 >
                     {locale == 'ar-EG' ? (
-                        <Icon icon="mdi:abjad-arabic" />
+                        // <Icon icon="mdi:abjad-arabic" />
+                        <span className='font-headingAr' >ع</span>
                     ) : (
-                        <Icon icon="ri:english-input" />
+                        // <Icon icon="ri:english-input" />
+                        <span className='font-headingEn'>en</span>
                     )}
                 </Button>
             </DropdownMenuTrigger >
