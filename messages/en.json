@@ -5,5 +5,10 @@
   "LanguageSwitcher": {
     "English": "English",
     "Arabic": "Arabic"
+  },
+  "Hero": {
+    "headline": "Frontend Maestro Weaving Magic with React.js, Next.js, and Web Accessibility",
+    "description": "With a meticulous eye, I create intuitive interfaces on the web, ensuring web accessibility and a seamless user experience.",
+    "callToAction": "Let's Talk"
   }
 }

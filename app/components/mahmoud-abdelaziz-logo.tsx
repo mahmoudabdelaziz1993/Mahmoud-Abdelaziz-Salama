@@ -39,7 +39,7 @@ function MahmoudAbdelazizLogo({ width }: Props) {
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
-            <h3 className='hidden text-2xl font-bold leading-tight tracking-tight md:inline'>{t("Name")}</h3>
+            <h6 className='hidden font-bold leading-tight tracking-tight rtl:leading-normal md:inline bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-br from-foreground to-foreground/50 '>{t("Name")}</h6>
         </span>
     )
 }

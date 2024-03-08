@@ -5,6 +5,7 @@ import { SkillCard } from '../components/Skill-card'
 import WorkCard from '../components/Work-Card '
 import { countWorkingDays } from '@/utils/working-days'
 import BasicInfoSemantic from '../components/semantic-basic-info'
+import { BackgroundGradientAnimationDemo } from '../components/hero'
 
 type Props = {
   params: {
@@ -18,6 +19,7 @@ export default async function Home({ params: { locale } }: Props) {
   const { data: work, success: workSuccess } = await GetWork(locale)
   return (
     <>
+      <BackgroundGradientAnimationDemo />
       {/* {success && BasicInfo && <BasicInfoSemantic data={BasicInfo} />} */}
       {success && BasicInfo && <BasicInfoCard name={BasicInfo.name} label={BasicInfo.label} summary={BasicInfo.summary} location_address={BasicInfo.location_address} image={BasicInfo.image} email={BasicInfo.email} phone={BasicInfo.phone} phone2={BasicInfo.phone2} />}
       {skillsSuccess && skills && skills.map((skill) => (
