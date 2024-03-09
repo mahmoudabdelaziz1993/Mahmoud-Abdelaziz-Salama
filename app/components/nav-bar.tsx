@@ -8,8 +8,8 @@ type props ={
 }
 export default function Navbar({ locale }: props) {
     return (
-        <header className='container sticky top-0 flex max-w-2xl mx-auto mt-4  shadow-lg lg:top-2 backdrop-blur-sm   bg-background/50 text-foreground drop-shadow-md border-foreground z-50'>
-            <div className="flex items-center justify-between w-full gap-2 p-2">
+        <header className='container sticky top-0 flex max-w-2xl mx-auto mt-4 rounded-lg  shadow-lg lg:top-2 backdrop-blur-lg   bg-background/50 text-foreground drop-shadow-md border-foreground z-50'>
+            <div className="flex items-center justify-between w-full gap-2 px-2">
                 <span className="inline-flex items-center gap-2">
                     <MahmoudAbdelazizLogo width={48} />
                 </span>

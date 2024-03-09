@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Rakkas as FontHeadingAr, Lateef as FontBaseAr, DM_Serif_Display as FontHeadingEn, DM_Mono as FontBaseEn } from 'next/font/google'
+import { Rakkas as FontHeadingAr, Lateef as FontBaseAr, DM_Serif_Display as FontHeadingEn, DM_Sans as FontBaseEn } from 'next/font/google'
 import '../globals.css'
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';

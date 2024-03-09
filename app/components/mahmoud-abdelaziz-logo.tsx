@@ -19,7 +19,7 @@ function MahmoudAbdelazizLogo({ width }: Props) {
         <span className="inline-flex items-center gap-2 cursor-pointer">
             <TooltipProvider>
                 <Tooltip>
-                    <TooltipTrigger>
+                    <TooltipTrigger asChild>
                         <Link href='/' className='text-primary'>
                             <svg width={width} height={width} viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="MAHMOUD_ABDELZIZ_LOGO">
@@ -39,7 +39,9 @@ function MahmoudAbdelazizLogo({ width }: Props) {
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
-            <h6 className='hidden font-bold leading-tight tracking-tight rtl:leading-normal md:inline bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-br from-foreground to-foreground/50 '>{t("Name")}</h6>
+            <h6 className='hidden font-bold md:inline bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-br from-foreground to-foreground/50 '>
+                {t("Name")}
+            </h6>
         </span>
     )
 }
