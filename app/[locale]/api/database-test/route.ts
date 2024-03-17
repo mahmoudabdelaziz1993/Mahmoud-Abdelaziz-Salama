@@ -4,9 +4,7 @@ import { type NextRequest } from 'next/server';
 
 
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = "edge"
 
 // export interface BasicInfoResponse extends Response {
 //   data?: BasicInfo;
