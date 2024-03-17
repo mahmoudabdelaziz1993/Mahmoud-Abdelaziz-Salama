@@ -4,7 +4,6 @@ import { type NextRequest } from 'next/server';
 
 
 
-export const runtime = "edge"
 
 // export interface BasicInfoResponse extends Response {
 //   data?: BasicInfo;
@@ -36,3 +35,4 @@ export async function GET(req: NextRequest, { params: { locale } }: { params: { 
     return Response.json(response);
   }
 }
+export const runtime = "edge"
