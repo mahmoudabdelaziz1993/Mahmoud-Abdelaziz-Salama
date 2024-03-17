@@ -12,7 +12,7 @@ export function SkillLevel({ level }: { level: number }) {
     // Define an reference to the container element
     const containerRef = useRef(null);
     // Define inView state for the container
-    const containerInView = useInView(containerRef ,{amount:0.5 , once:true});
+    const containerInView = useInView(containerRef ,{amount:1 , once:true});
     // Define animation variants for the container
     const container = {
         hidden: {
@@ -23,9 +23,9 @@ export function SkillLevel({ level }: { level: number }) {
             opacity: 1,
             scale: 1,
             transition: {
-                when: "beforeChildren",
+                // when: "afterChildren",
                 staggerChildren: 0.1,
-                duration: 0.1
+                // duration: 0.1
             }
         }
 

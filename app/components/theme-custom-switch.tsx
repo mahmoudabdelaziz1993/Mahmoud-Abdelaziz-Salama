@@ -5,9 +5,9 @@ import { useTheme } from "next-themes";
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 export const spring = {
-    type: "easeInOut",
-    // stiffness: 200,
-    // damping: 30
+    type: "spring",
+    stiffness: 500,
+    damping: 100
 };
 export default function ThemeCustomSwitch() {
     const { setTheme, theme } = useTheme();
