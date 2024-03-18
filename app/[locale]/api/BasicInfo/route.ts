@@ -1,6 +1,7 @@
 import { pool } from '@/lib/DB-connection';
 import { BasicInfo } from '@/types/my-types';
 import { type NextRequest  } from 'next/server'
+export const runtime = "edge"
 
 export async function GET(req: NextRequest, { params: { locale } }: { params: { locale: string } }) {
     try {

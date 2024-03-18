@@ -5,14 +5,13 @@ import { type NextRequest } from 'next/server';
 
 
 
-// export interface BasicInfoResponse extends Response {
-//   data?: BasicInfo;
-// }
+
 export interface BasicInfoResponse {
   data?: BasicInfo,         // data
   error?: string,        // error
   success: 'success' | 'error'
 }
+export const runtime = "edge"
 
 export async function GET(req: NextRequest, { params: { locale } }: { params: { locale: string } }) {
 
@@ -35,4 +34,3 @@ export async function GET(req: NextRequest, { params: { locale } }: { params: { 
     return Response.json(response);
   }
 }
-export const runtime = "edge"
