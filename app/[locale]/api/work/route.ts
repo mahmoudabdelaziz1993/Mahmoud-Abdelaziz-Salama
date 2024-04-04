@@ -1,10 +1,8 @@
-import { pool } from '@/lib/DB-connection';
-import { type Response, BasicInfo } from '@/types/my-types';
+import { sql } from '@/lib/postgresSQL';
 import { type NextRequest } from 'next/server';
 
 
 
-export const runtime = "edge"
 
 
 export interface Work {
@@ -30,14 +28,12 @@ export async function GET(req: NextRequest, { params: { locale } }: { params: { 
 
     try {
         // define two queries to get data in en and ar
-        const ar_query = 'SELECT "name_ar" as "name", "position_ar" as "position", "highlights_ar" as "highlights","startDate_ar" as "startDate","endDate_ar" as "endDate","summary_ar" as "summary" , "url"  FROM work';
-        const en_query = 'SELECT "name_en" as "name", "position_en" as "position", "highlights_en" as "highlights","startDate_en" as "startDate","endDate_en" as "endDate","summary_en" as "summary" , "url"  FROM work';
+        const ar_query = await sql`SELECT "name_ar" as "name", "position_ar" as "position", "highlights_ar" as "highlights","startDate_ar" as "startDate","endDate_ar" as "endDate","summary_ar" as "summary" , "url"  FROM work`;
+        const en_query = await sql`SELECT "name_en" as "name", "position_en" as "position", "highlights_en" as "highlights","startDate_en" as "startDate","endDate_en" as "endDate","summary_en" as "summary" , "url"  FROM work`;
 
-        const client = await pool.connect();
         const query = locale === 'ar-EG' ? ar_query : en_query;
-        const { rows } = await client.query(query);
-        const response: { success: 'success'; data: Work[] } = { success: 'success', data: rows };
-        client.release();
+        const  rows  = query;
+        const response: { success: 'success'; data: Work[] } = { success: 'success', data: [...rows] as Work[] };
         return Response.json(response);
     } catch (error) {
         console.error('Unable to connect to the database:', error);

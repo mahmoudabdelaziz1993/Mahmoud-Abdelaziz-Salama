@@ -1,18 +1,16 @@
-import { pool } from '@/lib/DB-connection';
+import { sql } from '@/lib/postgresSQL';
 import { BasicInfo } from '@/types/my-types';
 import { type NextRequest  } from 'next/server'
-export const runtime = "edge"
 
 export async function GET(req: NextRequest, { params: { locale } }: { params: { locale: string } }) {
     try {
-        const ar_query = 'SELECT "name_ar" as "name", "label_ar" as "label", "summary_ar" as "summary", "location_address_ar" as "location_address","image","email","phone","phone2" FROM basics';
-        const en_query = 'SELECT "name_en" as "name", "label_en" as "label", "summary_en" as "summary", "location_address_en" as "location_address","image","email","phone","phone2" FROM basics';
+        const ar_query = await sql`SELECT "name_ar" as "name", "label_ar" as "label", "summary_ar" as "summary", "location_address_ar" as "location_address","image","email","phone","phone2" FROM basics`;
+        const en_query = await sql`SELECT "name_en" as "name", "label_en" as "label", "summary_en" as "summary", "location_address_en" as "location_address","image","email","phone","phone2" FROM basics`;
     
-        const client = await pool.connect();
         const query = locale === 'ar-EG' ? ar_query : en_query;
-        const { rows } = await client.query(query);
-        const response: { success: 'success'; data: BasicInfo } = { success: 'success', data: rows[0] };
-        client.release();
+        const  rows  = query;
+        const response: { success: 'success'; data: BasicInfo } = { success: 'success', data: rows[0] as BasicInfo };
+
         return Response.json(response);
     } catch (error) {
         console.error('Unable to connect to the database:', error);

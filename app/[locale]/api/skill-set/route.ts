@@ -1,10 +1,8 @@
-import { pool } from '@/lib/DB-connection';
-import { type Response, BasicInfo } from '@/types/my-types';
+import { sql } from '@/lib/postgresSQL';
 import { type NextRequest } from 'next/server';
 
 
 
-export const runtime = "edge"
 
 
 
@@ -24,13 +22,17 @@ export interface SkillSetResponse {
 export async function GET(req: NextRequest, { params: { locale } }: { params: { locale: string } }) {
 
     try {
-        const client = await pool.connect();
-        const query_ar = 'SELECT "name_ar" as "name", "level",  "icon" , "id" FROM skills';
-        const query_en = 'SELECT "name_en" as "name", "level",  "icon" , "id" FROM skills';
+        const query_ar = await sql`SELECT "name_ar" as "name", "level",  "icon" , "id" FROM skills`;
+        const query_en = await sql`SELECT "name_en" as "name", "level",  "icon" , "id" FROM skills`;
         const query = locale === 'ar-EG' ? query_ar : query_en;
-        const { rows } = await client.query(query);
-        const response: SkillSetResponse = { success: true, data: rows };
-        client.release();
+        const rows = query
+        const response: SkillSetResponse = {
+            success: true, data: [...rows].map((row) => ({
+                name: row.name,
+                level: row.level,
+                icon: row.icon, id: row.id.toString()
+            }))
+        };
         return Response.json(response);
     } catch (error) {
         const response: SkillSetResponse = { success: false, error: 'Unable to connect to the database' };

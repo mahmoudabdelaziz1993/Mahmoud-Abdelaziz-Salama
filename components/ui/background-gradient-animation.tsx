@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const BackgroundGradientAnimation = ({
   gradientBackgroundStart = "rgb(108, 0, 162)",
@@ -57,21 +57,21 @@ export const BackgroundGradientAnimation = ({
     document.body.style.setProperty("--size", size);
     document.body.style.setProperty("--blending-value", blendingValue);
   }, [blendingValue, fifthColor, firstColor, fourthColor, gradientBackgroundEnd, gradientBackgroundStart, pointerColor, secondColor, size, thirdColor]);
-
-  useEffect(() => {
-    function move() {
-      if (!interactiveRef.current) {
-        return;
-      }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
-      interactiveRef.current.style.transform = `translate(${Math.round(
-        curX
-      )}px, ${Math.round(curY)}px)`;
+  const move = useCallback(() => {
+    if (!interactiveRef.current) {
+      return;
     }
+    setCurX(curX + (tgX - curX) / 20);
+    setCurY(curY + (tgY - curY) / 20);
+    interactiveRef.current.style.transform = `translate(${Math.round(
+      curX
+    )}px, ${Math.round(curY)}px)`;
+  }, [curX, curY, tgX, tgY]);
+  // useEffect(() => {
 
-    move();
-  }, [tgX, tgY,, curX, curY]);
+
+  //   move();
+  // }, [move]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
@@ -79,6 +79,7 @@ export const BackgroundGradientAnimation = ({
       setTgX(event.clientX - rect.left);
       setTgY(event.clientY - rect.top);
     }
+    move();
   };
 
   const [isSafari, setIsSafari] = useState(false);
