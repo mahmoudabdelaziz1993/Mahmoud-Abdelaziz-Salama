@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import Link from 'next/link'
 import React from 'react'
 import {
@@ -7,14 +7,16 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { useTranslations } from 'next-intl';
+// import { useTranslations } from 'next-intl';
+import { BasicInfo } from '@/types/my-types';
 
 type Props = {
     width: number;
+    info: BasicInfo
 }
-function MahmoudAbdelazizLogo({ width }: Props) {
+function MahmoudAbdelazizLogo({ width , info }: Props) {
 
-    const t = useTranslations('Info');
+    // const t = useTranslations('Info');
     return (
         <span className="inline-flex items-center gap-2 cursor-pointer">
             <TooltipProvider>
@@ -35,13 +37,15 @@ function MahmoudAbdelazizLogo({ width }: Props) {
                         </Link>
                     </TooltipTrigger>
                     <TooltipContent>
-                        <p>{t("Name")}</p>
+                        <p>{info.label}</p>
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
+            
             <h6 className=' max-[375px]:hidden font-bold bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-br from-foreground to-foreground/50 line-clamp-1'>
-                {t("Name")}
+                {info.name}
             </h6>
+           
         </span>
     )
 }
