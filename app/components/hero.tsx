@@ -9,7 +9,7 @@ export function BackgroundGradientAnimationDemo() {
 
     return (
         <BackgroundGradientAnimation>
-            <article className="absolute z-10 inset-0 flex flex-col items-center justify-center  font-bold  max-w-xl pointer-events-none text-center  prose dark:prose-invert  prose-sm md:prose-base mx-auto prose-a:no-underline prose-a:capitalize prose-a:font-bold prose-p:mt-0  ">
+            <article className="absolute z-10 inset-0 flex flex-col items-center justify-center  font-bold px-4 max-w-xl pointer-events-none text-center  prose dark:prose-invert  prose-sm md:prose-base mx-auto prose-a:no-underline prose-a:capitalize prose-a:font-bold prose-p:mt-0  ">
                 <h1 className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-br from-foreground/80 to-foreground/50" aria-level={2}>
                     {t('headline')}                </h1>
                 <p className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-br from-foreground to-foreground/50 " aria-level={3}>

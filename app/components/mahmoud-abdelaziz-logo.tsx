@@ -21,7 +21,7 @@ function MahmoudAbdelazizLogo({ width }: Props) {
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Link href='/' className='text-primary'>
-                            <svg width={width} height={width} viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg  width={width} height={width} viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="MAHMOUD_ABDELZIZ_LOGO">
                                     <g id="BARS_GROUP">
                                         <path id="BAR_1" d="M16.5 44C16.5 39.3501 16.5 37.0252 17.0111 35.1177C18.3981 29.9413 22.4413 25.8981 27.6177 24.5111C29.5252 24 31.8501 24 36.5 24V24V84V84C31.8501 84 29.5252 84 27.6177 83.4889C22.4413 82.1019 18.3981 78.0587 17.0111 72.8823C16.5 70.9748 16.5 68.6499 16.5 64V44Z" fill="#EF1111" />
@@ -39,7 +39,7 @@ function MahmoudAbdelazizLogo({ width }: Props) {
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
-            <h6 className='hidden font-bold md:inline bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-br from-foreground to-foreground/50 '>
+            <h6 className=' max-[375px]:hidden font-bold bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-br from-foreground to-foreground/50 line-clamp-1'>
                 {t("Name")}
             </h6>
         </span>
