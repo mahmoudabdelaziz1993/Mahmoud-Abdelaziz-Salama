@@ -93,8 +93,10 @@ export const BackgroundGradientAnimation = ({
         "h-screen  w-full relative overflow-hidden top-0 left-0 bg-gradient-to-b from-background to-background/40 rounded-xl   ",
         containerClassName
       )}
+      aria-hidden={true}
     >
-      <svg className="hidden">
+      <svg className="hidden" aria-hidden={true}
+      >
         <defs>
           <filter id="blurMe">
             <feGaussianBlur
@@ -112,12 +114,15 @@ export const BackgroundGradientAnimation = ({
           </filter>
         </defs>
       </svg>
-      <div className={cn("", className)}>{children}</div>
+      <section className={cn("", className)}
+      >{children}</section>
       <div
         className={cn(
           "gradients-container h-full w-full blur-xl",
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
+        aria-hidden={true}
+
       >
         <div
           className={cn(
@@ -127,6 +132,8 @@ export const BackgroundGradientAnimation = ({
             `animate-first`,
             `opacity-100`
           )}
+          aria-hidden={true}
+
         ></div>
         <div
           className={cn(
@@ -136,6 +143,8 @@ export const BackgroundGradientAnimation = ({
             `animate-second`,
             `opacity-100`
           )}
+          aria-hidden={true}
+
         ></div>
         <div
           className={cn(
@@ -145,6 +154,8 @@ export const BackgroundGradientAnimation = ({
             `animate-third`,
             `opacity-100`
           )}
+          aria-hidden={true}
+
         ></div>
         <div
           className={cn(
@@ -154,6 +165,8 @@ export const BackgroundGradientAnimation = ({
             `animate-fourth`,
             `opacity-70`
           )}
+          aria-hidden={true}
+
         ></div>
         <div
           className={cn(
@@ -163,6 +176,8 @@ export const BackgroundGradientAnimation = ({
             `animate-fifth`,
             `opacity-100`
           )}
+          aria-hidden={true}
+
         ></div>
 
         {interactive && (
@@ -174,6 +189,8 @@ export const BackgroundGradientAnimation = ({
               `[mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2`,
               `opacity-70`
             )}
+            aria-hidden={true}
+
           ></div>
         )}
       </div>

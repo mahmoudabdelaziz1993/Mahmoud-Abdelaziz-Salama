@@ -8,6 +8,7 @@ import BasicInfoSemantic from '../components/semantic-basic-info'
 import { BackgroundGradientAnimationDemo } from '../components/hero'
 import Skills from '../components/Sections/Skills'
 import { Metadata, ResolvingMetadata } from 'next'
+import Work from '../components/Sections/Work'
 
 type Props = {
   params: {
@@ -38,12 +39,12 @@ export async function generateMetadata(
 export default async function Home({ params: { locale } }: Props) {
   console.log(locale)
   const { data: skills, success: skillsSuccess } = await GetSkills(locale)
-  const { data: work, success: workSuccess } = await GetWork(locale)
 
   return (
     <>
       <BackgroundGradientAnimationDemo />
       {skillsSuccess && skills && <Skills skills={skills} locale={locale} />}
+      {locale && <Work locale={locale} />}
       {/* {success && BasicInfo && <BasicInfoSemantic data={BasicInfo} />} */}
       {/* {success && BasicInfo && <BasicInfoCard name={BasicInfo.name} label={BasicInfo.label} summary={BasicInfo.summary} location_address={BasicInfo.location_address} image={BasicInfo.image} email={BasicInfo.email} phone={BasicInfo.phone} phone2={BasicInfo.phone2} />} */}
       {/* {skillsSuccess && skills && skills.map((skill) => (

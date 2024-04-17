@@ -24,7 +24,8 @@ export default function Skills({ skills, locale }: Props) {
         gradient={true}
         gradientWidth={24}
         gradientColor="hsl(var(--background))"
-        className="rtl:flex-row-reverse"
+        className="rtl:flex-row-reverse cursor-auto"
+        pauseOnHover={true}
       >
         {skills.map((skill) => (
           <SkillCard key={skill.id} {...skill} />
